@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<title>dojox/mobile Demo</title>
+		<script src="js/dojo/dojo.js" data-dojo-config="async: true"></script>
+		<script type="text/javascript">
+			
+			require(["dojox/mobile/parser", "dojox/mobile", "dojox/mobile/deviceTheme", "dojox/mobile/compat", "dojo/domReady!"], function(parser) {
+				parser.parse();
+			});
+			
+		</script>
+	</head>
+	<body>
+		
+		<div id="settings" data-dojo-type="dojox.mobile.View" data-dojo-props="selected: true">
+			<h1 data-dojo-type="dojox.mobile.Heading">Home</h1>
+			<ul data-dojo-type="dojox.mobile.RoundRectList">
+				<li data-dojo-type="dojox.mobile.ListItem" data-dojo-props="icon:'../../app/images/i-icon-2.png', rightText:'Load data', moveTo: 'general'">
+				Load Data
+				</li>
+			</ul>
+		</div>
+
+		<div id="general" data-dojo-type="dojox.mobile.View">
+			<h1 data-dojo-type="dojox.mobile.Heading" data-dojo-props="back:'Settings', moveTo:'settings'">Some Data</h1>
+			</ul>
+		</div>
+	</body>
+</html>
+
