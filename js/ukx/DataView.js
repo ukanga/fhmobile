@@ -1,7 +1,21 @@
 define(["dojo/_base/declare", "dojo/_base/lang", "dojo/aspect", "dojox/mobile/View", "ukx/_ViewMixin", "dojo/DeferredList", "dojo/io/script", "dijit/registry"], function(declare, lang, aspect, mView, _ViewMixin, DeferredList, ioScript, registry) {
   declare("ukx.DataView", [mView, _ViewMixin], {
+
     iconLoading: require.toUrl("ukx/resources/images/loading.gif"),
     serviceUrl: "http://localhost:8000/ukanga",
+
+    xform : {
+      questions : {},
+      getColumns : function(){
+        return questions;
+      },
+      submissions : {},
+      getData : function{
+        return submissions;
+      } 
+      
+    },
+
     startup : function() {
       this.inherited(arguments);
       
