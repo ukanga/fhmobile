@@ -2,9 +2,11 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang"], function(d
 	return declare("ukx.XForm", null, {
 	  _questions : [],
     _submissions : [],
+
     getColumns : function() {
       return this._questions;
     },
+
     getData : function(){
       return this._submissions;
     },
@@ -17,6 +19,10 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang"], function(d
             }));
           }
         }
+    },
+
+    setSubmssions : function(data) {
+      this._submissions = data;
     }
   })
 });
