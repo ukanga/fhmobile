@@ -2,7 +2,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/aspec
   declare("ukx.DataView", [mView, _ViewMixin], {
 
     iconLoading: require.toUrl("ukx/resources/images/loading.gif"),
-    serviceUrl: "http://localhost:8000/ukanga",
+    serviceUrl: "http://formhub.org/ukanga/forms/work_expense_capture/api",
     xform : new ukXform(),
     
 
@@ -14,6 +14,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/aspec
 			this.iconImage = this.iconNode.src;
 			
 			aspect.after(this.refreshButton, "onClick", lang.hitch(this, 'refresh'), true);
+			this.refresh();
     },
     
     refresh : function() {
@@ -30,7 +31,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/aspec
 			  callbackParamName: "callback",
 			  preventCache: true,
 				timeout: 3000,
-			  url: "http://localhost:8000/ukanga/forms/1work_expense_capture/form.json"
+			  url: "http://formhub.org/ukanga/forms/work_expense_capture/form.json"
 			});
     },
 
@@ -39,7 +40,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/aspec
 			  callbackParamName: "callback",
 			  preventCache: true,
 				timeout: 3000,
-			  url: "http://localhost:8000/ukanga/forms/1work_expense_capture/api"
+			  url: "http://formhub.org/ukanga/forms/work_expense_capture/api"
 			});
     },
 
