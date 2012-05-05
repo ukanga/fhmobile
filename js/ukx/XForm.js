@@ -12,10 +12,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang"], function(d
     getData : function(){
       return this._submissions;
     },
-    setForm : function(rawData) {
-      if(!lang.isArray(rawData))
-        return;
-      baseArray.forEach(rawData, dojo.hitch(this, function(data){
+    setForm : function(data) {
         if(lang.isObject(data)) {
           if(lang.isArray(data.children)){
             baseArray.forEach(data.children, dojo.hitch(this, function(col){
@@ -24,7 +21,6 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang"], function(d
             }));
           }
         }
-      }));
     }
   })
 });
