@@ -25,7 +25,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang"], function(d
         }
     },
 
-    setSubmssions : function(data) {
+    setSubmissions : function(data) {
       this._submissions = data;
     }
   })
