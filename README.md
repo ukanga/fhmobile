@@ -1,4 +1,5 @@
-This project is a demo - proof of concept (work still in progress) - on using dojo mobile and dgrid.
+This project is a demo - proof of concept (work still in progress) - on using dojo mobile,
+ dgrid fetching data from formhub.
 
 * ['dgrid'](https://github.com/SitePen/dgrid)
 * [xstyle](https://github.com/kriszyp/xstyle)
