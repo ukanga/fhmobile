@@ -3,6 +3,10 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang"], function(d
 	  _questions : [],
     _submissions : [],
 
+    isReady : function(){
+      return (this._submissions.length > 0 && this._questions.length > 0);
+    },
+
     getColumns : function() {
       return this._questions;
     },
