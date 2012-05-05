@@ -1,4 +1,4 @@
-define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/aspect", "dojox/mobile/View", "ukx/_ViewMixin", "dojo/DeferredList", "dojo/io/script", "dijit/registry", "ukx/XForm"], function(declare, baseArray, lang, aspect, mView, _ViewMixin, DeferredList, ioScript, registry, ukXform) {
+define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/aspect", "dojox/mobile/View", "ukx/_ViewMixin", "dojo/DeferredList", "dojo/io/script", "dijit/registry", "ukx/XForm", "dgrid/Grid"], function(declare, baseArray, lang, aspect, mView, _ViewMixin, DeferredList, ioScript, registry, ukXform, Grid) {
   declare("ukx.DataView", [mView, _ViewMixin], {
 
     iconLoading: require.toUrl("ukx/resources/images/loading.gif"),
@@ -55,6 +55,18 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/aspec
 			refreshButton.select(true);
 			this.xform.setSubmissions(rawData);
       console.log(rawData);
+      this.displayGrid();
     },
+
+    displayGrid : function() {
+      if(this.xform.isReady()){
+        var columns = this.xform.getColumns();
+        var data = this.xform.getData();
+        console.log(columns);
+        console.log(data);
+        var grid = new Grid({ columns: columns }, "grid");
+        grid.renderArray(data);
+      }
+    }
   })
 });
