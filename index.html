@@ -2,13 +2,35 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	    <!-- prevent cache -->
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="pragma" content="no-cache">
 		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
 		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<title>dojox/mobile Demo</title>
-		<script src="js/dojo/dojo.js" data-dojo-config="async: true"></script>
+		<title>Ukx: Dojo mobile</title>
+		<link href="js/ukx/resources/DataView.css" rel="stylesheet" />
 		<script type="text/javascript">
 			
-			require(["dojox/mobile/parser", "dojox/mobile", "dojox/mobile/deviceTheme", "dojox/mobile/compat", "dojo/domReady!"], function(parser) {
+			var dojoConfig = (function(){
+				var base = location.href.split("/");
+				base.pop();
+				base = base.join("/");
+				
+				return {
+					async: true,
+					isDebug: true,
+					packages: [{
+						name: "ukx",
+						location: base + "/js/ukx"
+					}]
+				};
+			})();
+			
+		</script>
+		<script src="js/dojo/dojo.js"></script>
+		<script type="text/javascript">
+			
+			require(["dojox/mobile/parser", "ukx/DataView", "dojox/mobile", "dojox/mobile/deviceTheme", "dojox/mobile/compat", "dojo/domReady!"], function(parser) {
 				parser.parse();
 			});
 			
@@ -19,14 +41,15 @@
 		<div id="settings" data-dojo-type="dojox.mobile.View" data-dojo-props="selected: true">
 			<h1 data-dojo-type="dojox.mobile.Heading">Home</h1>
 			<ul data-dojo-type="dojox.mobile.RoundRectList">
-				<li data-dojo-type="dojox.mobile.ListItem" data-dojo-props="icon:'../../app/images/i-icon-2.png', rightText:'Load data', moveTo: 'general'">
-				Load Data
+				<li data-dojo-type="dojox.mobile.ListItem" data-dojo-props="icon:'../../app/images/i-icon-2.png', rightText:'view', moveTo: 'fhdata'">
+				Load Data Here
 				</li>
 			</ul>
 		</div>
 
-		<div id="general" data-dojo-type="dojox.mobile.View">
-			<h1 data-dojo-type="dojox.mobile.Heading" data-dojo-props="back:'Settings', moveTo:'settings'">Some Data</h1>
+		<div id="fhdata" data-dojo-type="ukx.DataView">
+			<h1 data-dojo-type="dojox.mobile.Heading" data-dojo-props="back:'Settings', moveTo:'settings'">
+			  <div data-dojo-type="dojox.mobile.ToolBarButton" class="mblDomButton dataviewRefresh" data-dojo-props="icon: 'js/ukx/resources/images/refresh.png'"></div>Some Data</h1>
 			</ul>
 		</div>
 	</body>
