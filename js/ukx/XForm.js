@@ -1,14 +1,10 @@
 define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang"], function(declare, baseArray, lang) {
 	return declare("ukx.XForm", null, {
-	  constructor : function(args) {
-	    declare.safeMixin(this, args);
-	    this._questions = [];
-	    console.log("Cannot believe this yet", this._questions);
-	  },
+	  _questions : [],
+    _submissions : [],
     getColumns : function() {
       return this._questions;
     },
-    _submissions : [],
     getData : function(){
       return this._submissions;
     },
