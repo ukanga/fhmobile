@@ -20,29 +20,40 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/aspec
       // Set the refresh icon
 			var refreshButton = this.refreshButton;
 			refreshButton.set("icon", this.iconLoading);
-			refreshButton.select();
-			var defs = [];
-			defs.push(ioScript.get({
+			refreshButton.select(); 
+      this.getXform().then(lang.hitch(this, this.onFormReceived));
+      this.getSubmissions().then(lang.hitch(this, this.onSubmissionsReceived));
+    },
+
+    getXform : function(){
+      return ioScript.get({
 			  callbackParamName: "callback",
 			  preventCache: true,
 				timeout: 3000,
 			  url: "http://localhost:8000/ukanga/forms/1work_expense_capture/form.json"
-			}));
-      console.log("Hello");
-      new DeferredList(defs).then(lang.hitch(this, this.onFormReceived),
-        function(err){
-          console.log("Error: " + err);
-        }
-      );
+			});
     },
-    
+
+    getSubmissions : function(){
+      return ioScript.get({
+			  callbackParamName: "callback",
+			  preventCache: true,
+				timeout: 3000,
+			  url: "http://localhost:8000/ukanga/forms/1work_expense_capture/api"
+			});
+    },
+
     onFormReceived: function(rawData){
+      this.xform.setForm(rawData);
+      console.log(this.xform.getColumns())
+      console.log(rawData);
+    },
+
+    onSubmissionsReceived: function(rawData){
       // Set the refresh icon back
 			var refreshButton = this.refreshButton;
 			this.iconNode.src = this.iconImage;
 			refreshButton.select(true);
-      this.xform.setForm(rawData[0]);
-      console.log(this.xform.getColumns())
       console.log(rawData);
     },
   })
