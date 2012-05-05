@@ -1,24 +1,14 @@
-define(["dojo/_base/declare", "dojo/_base/lang", "dojo/aspect", "dojox/mobile/View", "ukx/_ViewMixin", "dojo/DeferredList", "dojo/io/script", "dijit/registry"], function(declare, lang, aspect, mView, _ViewMixin, DeferredList, ioScript, registry) {
+define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/aspect", "dojox/mobile/View", "ukx/_ViewMixin", "dojo/DeferredList", "dojo/io/script", "dijit/registry", "ukx/XForm"], function(declare, baseArray, lang, aspect, mView, _ViewMixin, DeferredList, ioScript, registry, ukXform) {
   declare("ukx.DataView", [mView, _ViewMixin], {
 
     iconLoading: require.toUrl("ukx/resources/images/loading.gif"),
     serviceUrl: "http://localhost:8000/ukanga",
-
-    xform : {
-      questions : {},
-      getColumns : function(){
-        return questions;
-      },
-      submissions : {},
-      getData : function{
-        return submissions;
-      } 
-      
-    },
+    xform : new ukXform(),
+    
 
     startup : function() {
       this.inherited(arguments);
-      
+      console.log(this.xform);
       this.refreshButton = registry.byId(this.getElements("dataviewRefresh", this.domNode)[0].id);
 			this.iconNode = this.refreshButton.iconNode.childNodes[0];
 			this.iconImage = this.iconNode.src;
@@ -51,8 +41,9 @@ define(["dojo/_base/declare", "dojo/_base/lang", "dojo/aspect", "dojox/mobile/Vi
 			var refreshButton = this.refreshButton;
 			this.iconNode.src = this.iconImage;
 			refreshButton.select(true);
-      
+      this.xform.setForm(rawData[0]);
+      console.log(this.xform.getColumns())
       console.log(rawData);
-    }
+    },
   })
 });
