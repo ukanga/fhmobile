@@ -45,7 +45,6 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/aspec
 
     onFormReceived: function(rawData){
       this.xform.setForm(rawData);
-      console.log(this.xform.getColumns())
       console.log(rawData);
     },
 
@@ -54,6 +53,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/aspec
 			var refreshButton = this.refreshButton;
 			this.iconNode.src = this.iconImage;
 			refreshButton.select(true);
+			this.xform.setSubmissions(rawData);
       console.log(rawData);
     },
   })
