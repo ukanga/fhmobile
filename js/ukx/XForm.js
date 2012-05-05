@@ -15,6 +15,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang"], function(d
       return this._submissions;
     },
     setForm : function(data) {
+        this._questions = []
         if(lang.isObject(data)) {
           if(lang.isArray(data.children)){
             baseArray.forEach(data.children, dojo.hitch(this, function(col){
